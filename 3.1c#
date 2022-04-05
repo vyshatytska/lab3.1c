@@ -1,0 +1,63 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace lab3._1
+{
+    internal class Program
+    {
+        static bool Contain(string p)
+        {
+            string p1 = "!!!";
+            bool a = p.Contains(p1);
+            if (a == true) ;
+               return a;
+        }
+        static int CountWords(string test)
+        {
+            int count = 0;
+            bool wasInWord = false;
+            bool inWord = false;
+            for (int i=0; i < test.Length; i++)
+            {
+                if (inWord)
+                {
+                    wasInWord = true;
+                }
+                if (Char.IsWhiteSpace(test[i]))
+                {
+                    count++;
+                    wasInWord = false;
+                }
+                else
+                {
+                    inWord = true;
+                }
+            }
+            if (wasInWord)
+                count++;
+            return count;
+        }
+
+        static void Main(string[] args)
+        {
+            string p;
+            Console.Write("Enter string: ");
+            p = Console.ReadLine();
+            bool a = Contain(p);
+            Console.Write("1) Чи є пара сусідніх знаків !!!");
+                if (a) 
+                Console.Write("Yes\n");
+            else
+                Console.Write("No\n");
+            Console.WriteLine("2) replace !!! with ***");
+            string p2 = p.Replace("!!!", "***");
+            Console.WriteLine(p2);
+            Console.Write($"3) Number of words = {CountWords(p)}");
+            Console.ReadKey();
+        }
+    }
+}
+
